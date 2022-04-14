@@ -1,0 +1,611 @@
+@import url('https://fonts.googleapis.com/css2?family=Belleza&family=Homemade+Apple&family=Prata&family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+.col-1 {width: 12.5%;}
+.col-2 {width: 25%;}
+.col-3 {width: 37.5%;}
+.col-4 {width: 50%;}
+.col-5 {width: 62.5%;}
+.col-6 {width: 75%;}
+.col-7 {width: 87.5%;}
+.col-8 {width: 100%;}
+
+[class*="col-"] {
+  float: left;
+  padding: 0;
+  /*border: 2px solid red; /*<--------comment out*/
+}
+
+.empty {
+	padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+:root {
+  --my-black: #292626;
+  --my-mauve:  #C0B0B0;
+  --my-font1: 'Prata', serif;
+  --my-font2: 'Homemade Apple', cursive;
+  --my-font3: 'Belleza', sans-serif;
+  --my-bgr: #fafafa;
+}
+
+/*------------------general below------------------*/
+body {
+	padding: 0;
+	margin: 0;
+	color: var(--my-black);}
+
+a {
+	text-decoration: none;
+	color: var(--my-black);
+}
+
+/*----------------remove browser defaults---------------*/
+input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+/* Chrome, Safari, Edge, Opera:  remove input type number arrows*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox: remove input type number arrows*/
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input:not([type=submit]), textarea {
+	font-family:  var(--my-font3);
+	padding: 10px 5px; /*------use padding with input fields:  chrome, edge don't recognize line-height----------*/
+	font-size: 0.875em; /*14px*/
+	outline: none;
+	color: var(--my-black);
+	border: 1px solid var(--my-mauve);
+	background-color:  white;
+}
+
+input[type=submit] {
+	margin-top:  5px;
+ 	background-color: var(--my-mauve);
+  	color: white;
+  	padding: 5px 15px;
+  	border: none;
+  	border-radius: 4px;
+  	cursor: pointer;
+  	font-family:  var(--my-font3);
+	font-size: 0.875em;
+	text-align:  center;
+}
+
+p {
+	font-family: var(--my-font3);
+	font-weight: normal;
+	font-size: 1em;
+	line-height: 150%;
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+h1, h3 {
+	font-family: var(--my-font1);
+}
+
+h2 {
+	font-family: var(--my-font2);
+	font-size: 1.4em;
+	line-height: 150%;
+}
+
+h3 {
+	font-size: 1.8em;
+	line-height: 150%;
+}
+
+h5 { /*in formula sheet notes, ingredients, in comment section*/
+	font-family: var(--my-font2);
+	font-size: 1em;
+	font-weight: normal;
+}
+
+h6 { /*used in footer*/
+	font-family:  var(--my-font3);
+	font-weight: normal;
+	font-size: 0.8em;
+	line-height: 70%;
+	text-align: center;
+}
+
+hr {
+	background-color: var(--my-mauve);
+	border:  none;
+	height: 1px;
+}
+
+.largeseparator {
+	padding: 60px;
+	background-color: white;
+}
+
+.separator {
+	padding: 40px;
+	background-color: white;
+}
+
+.smallseparator {
+	padding:  20px;
+	background-color: white;
+}
+
+.aright {
+	text-align: right;
+}
+
+.aleft {
+	text-align: left;
+}
+
+.acenter {
+	text-align: center;
+}
+
+.left {
+	float:  left;
+}
+
+.rel {
+	position: relative;
+}
+
+
+/*-----------------page-specific below--------*/
+
+#header {
+	background-color: #fafafa;
+	padding: 3% 12.5%;
+}
+
+#header h1 {
+	font-size: 2.5em; /*40px*/
+	line-height:  150%;
+}
+
+#logo {
+	width:  auto;
+	height: auto;
+	float: left;
+	padding: 30px 5px 0px 0px;
+}
+
+.navbar {
+	font-family: var(--my-font3);
+	font-size: 0.875em; /*14px*/
+	text-align:  right;
+	float: right;
+}
+
+.navbar a {
+	line-height: 250%;
+	padding: 1.5%;
+}
+
+#search {
+	text-align: right;
+	float: right;
+}
+
+.pagetitle h1 {
+	padding-top: 4%;
+	font-size: 2.2em;
+	text-align:  center;
+}
+
+.postinfo p {
+	font-size: 0.8em;
+	color: var(--my-mauve);
+}
+
+#gallerycontainer {
+	position: relative;
+}
+
+.gallery {
+	display: none;
+}
+
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 45%;
+  	width: auto;
+  	padding: 10px;
+  	color: white;
+  	font-weight: bold;
+  	font-size: 25px;
+  	user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  	right: 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.imgtext {
+  	text-align: center;
+  	background-color: rgba(250, 250, 250, 0.5);
+  	padding: 2px 16px;
+	position:  absolute;
+	top: 30%;
+	left: 20%;
+	right: 20%;
+	bottom: 30%;
+	font-family: var(--my-font2);
+	font-weight: bold;
+	font-size: 1.5vw;
+	vertical-align: center;
+}
+
+#preview {
+	width: 80%;
+}
+
+.postinfo {
+	padding-top: 1%;
+}
+
+.posttext h3 {
+	margin: 0;
+}
+
+.pagetitle hr {
+	width: 10%;
+	margin-bottom: 4%;
+}
+
+/*-------------footer------------------*/
+.footer {
+	background-image: url('/img/flowers.png');
+	background-color: white;
+	z-index: 0;
+}
+
+.copyright {	
+	z-index: 2;
+}
+
+.box {
+	background-color: white;
+	margin-right: 6%; /*for gaps between boxes, also centers them*/
+	margin-top: 2%;
+	margin-bottom: -1%;
+	padding-bottom: 15px;
+	z-index: 1;
+}
+
+.footer hr, .commentsection hr {
+	width: 100%;
+}
+/*-----------About---------------*/
+
+.about img, .formulacategory img {
+	position:  relative;
+	z-index:  2;
+	border: 5px solid white;
+	outline: 1px solid var(--my-mauve);
+	box-shadow: 2px 2px 2px var(--my-mauve);
+}
+
+.abouttext {
+	position:  relative;
+	z-index: 1;
+	background-color: rgba(240, 220, 220, 0.8);
+	padding:  100px 100px 50px 100px;
+	margin-top:  -5vw;
+}
+
+#contact {
+	text-align:  center;
+	background-image: url('/img/background3.jpg');
+	background-color: rgba(240 ,220, 220,0.9);
+	background-blend-mode: lighten;
+	background-size:  100% 100%;
+	margin-top: 30px;
+	padding: 2% 15%;
+}
+
+#contact input:not([type=submit]), textarea {
+ 	margin-top: 10px;
+	width: 100%;
+	resize: none;
+}
+
+.h-captcha {
+	padding-top: 10px;
+}
+
+/*-----------Formulae------------*/
+.formulacategory h4 {
+
+	font-family: var(--my-font2);
+	font-size:  1vw;
+	position:  relative;
+	z-index: 3;
+	padding: 0px 15px;
+	background-color:  rgba(240, 220, 220, 0.5);
+	margin-bottom: -140px;
+	text-align: left;
+}
+
+#cat1 {
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+#cat2 {
+	margin-left: 26%;
+	margin-right: 26%;
+}
+
+#cat3 {
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+#face, #bath {
+	width: 100%;
+}
+
+#hair {
+	width: 50%;
+}
+
+/*----------Postpage------------*/
+.postpage h3 {
+	padding-top: 50px;
+	line-height:  100%;
+}
+
+.postpage a { /*link colour*/
+	color: var(--my-mauve);
+}
+
+.postpage h6 { /*date and link*/
+	margin-top: 0;
+	text-align:  left;
+	font-size: 0.9em;
+	color: var(--my-mauve);
+}
+
+#formulaspace {
+	background-color: rgba(240, 220, 220, 0.2);
+	padding: 0 0 15px 50px;
+	line-height: 100%;
+}
+
+#formulaspace input[type=number], #formulaspace input[type=text] {
+	float: left;
+	text-align: left;
+	width: 80%;
+	overflow: auto;
+}
+
+#formulaspace input[type=number] {
+	width: 55%;
+}
+
+#formulaspace p {
+	padding-right: 50px;
+}
+
+.comment p {
+	font-size: 0.7;
+}
+
+/*----------------Administrator----------------- */
+.loginfield {
+	padding: 5px;
+	width:  100%;
+}
+
+.admincomment {
+	border: 1px solid var(--my-mauve);
+}
+
+.submitform {
+	width:  100%;
+	height: 40px;
+}
+
+.longtext {
+	height: 100px;
+}
+
+.adminbutton {
+	margin-top: 20px;
+}
+
+/*----------------------formulator-------------------------------*/
+#addline {
+	width: 15%;
+}
+
+#print {
+	width: 10%;
+}
+
+#addnotes {
+	width: 30%;
+}
+
+/*------------------browser size dependant CSS-------------------------------------------------------------------*/
+
+@media (max-width: 1200px) { 
+	
+	[class*="col-"] {
+		width: 90%;
+		margin-left: 5%;
+	}
+
+	.empty {
+		width: 0;
+		padding: 0;
+	}
+
+	.box {
+		width: 20%;
+	}
+
+	.perc20 {
+		width:  20%;
+	}
+
+	.perc25 {
+		width: 25%;
+	}
+
+	.perc40 {
+		width: 40%;
+	}
+
+	#formulaspace {
+		padding:  0 0 5px 10px;
+	}
+
+	#formulaspace input[type=number], #formulaspace input[type=text] {
+		width: 100%;
+	}
+
+	.abouttext {
+		padding: 10% 5% 5% 5%;
+	}
+
+	#face, #hair, #bath {
+		width: 35%;
+	}
+
+	.formulacategory h4 {
+		font-size: 2vw;
+	}
+
+	#cat1, #cat2, #cat3 {
+		margin-left: 33%;
+		margin-right: 33%;
+		margin-bottom: -20%;
+		margin-top: 20%;	
+	}
+
+	.imgtext {
+		font-size: 2.5vw;
+		top: 30%;
+		bottom: 25%;
+	}
+
+}
+
+@media (max-width: 800px) {
+
+	#addline { /*formulator buttons get too narrow for text*/
+		width: 30%;
+	}
+
+	#print {
+		width: 20%;
+	}
+
+	#addnotes {
+		width: 50%;
+	}
+}
+
+@media(max-width: 550px) {
+
+	#header h1 {
+		font-size: 7vw;
+	}
+
+	#header h5 {
+		font-size: 3vw;
+	}
+
+	#header {
+		padding: 2%;
+	}
+
+	#logo {
+		width: 12%;
+	}
+
+	[class*="col-"] {
+		width: 95%;
+		margin-left: 2.5%; /*negate from larger screen*/
+	}
+
+	.perc30 { /*getposts*/
+		width:  30%;
+	}
+
+	.perc20t { /*have to repeat as col- gets redefined again*/
+		width: 20%;
+	}
+
+	.perc40t { /*have to repeat as col- gets redefined again*/
+		width: 40%;
+	}
+
+	.perc60 {/*getposts*/
+		width: 60%;
+	}
+	
+	.posttext {
+		padding: 5% 2% 0 2%;
+	}
+
+	.box {
+		margin-left: 10%;
+		margin-right: 0;
+		width: 20%;
+	}
+
+	#formulaspace h5 {
+		font-size: 3vw;
+	}
+
+	#face, #bath, #hair {
+		width: 60%;
+	}
+
+	.formulacategory h4 {
+		font-size: 3vw;
+	}
+
+	#cat1, #cat2, #cat3 {
+		margin-left: 21%;
+		margin-right: 21%;
+		margin-bottom: -35%;
+		margin-top: 35%;	
+	}
+}
+
+input:disabled {
+        color: var(--my-black);
+
+}
+
+
